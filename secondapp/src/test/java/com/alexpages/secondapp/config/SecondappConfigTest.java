@@ -29,13 +29,13 @@ class SecondappConfigTest {
 
 		webClient.post()
 			.uri("/note")
-			.body(Mono.just(requestNote1), PlaceNoteResponse.class)
+			.body(Mono.just(requestNote1), PlaceNoteRequest.class)
 			.retrieve()
 			.bodyToMono(Void.class).block();
 
 		webClient.post()
 			.uri("/note")
-			.body(Mono.just(requestNote2), PlaceNoteResponse.class)
+			.body(Mono.just(requestNote2), PlaceNoteRequest.class)
 			.retrieve()
 			.bodyToMono(Void.class).block();
 
