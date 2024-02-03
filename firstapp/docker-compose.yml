@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+
+   firstapp:
+      container_name: firstapp
+      depends_on:
+         - mysql
+      build:
+         context: .
+         dockerfile: Dockerfile
+      ports:
+         - "8080:8080"
+      restart: on-failure
+      networks:
+         - internal-net
+      environment:
+         - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/note_db
+         - SPRING_DATASOURCE_USERNAME=sa
+         - SPRING_DATASOURCE_PASSWORD=sa
+         - SPRING_PROFILES_ACTIVE=docker
+
+   mysql:
+      container_name: mysql
+      image: mysql:latest
+      restart: unless-stopped
+      volumes:
+         - rv-volume:/var/lib/mysql
+      networks:
+         - internal-net
+      environment:
+         - MYSQL_DATABASE=note_db
+         - MYSQL_USER=sa
+         - MYSQL_PASSWORD=sa
+         - MYSQL_ROOT_PASSWORD=sa
+
+networks:
+   internal-net:
+
+volumes:
+   rv-volume:
