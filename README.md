@@ -41,7 +41,7 @@ Here are some features of the overall configuration:
          platform: linux/amd64      #Specifies platform
       ports:
 ```
-4. Go to the root of the Firstapp and manually docker-compose up:
+4. Go to the root of the Firstapp and manually docker-compose up.
 5. Run Secondapp as `maven install` or run manually the tests as JUnit.
 
 ### What to expect
@@ -117,3 +117,11 @@ Here are some features of the overall configuration:
       ```
       []
       ```
+### Evidences
+The following two images serve as an additional test evidence of the correct functionality for both Mac M1 and Windows:
+
+#### Windows
+![Windows](https://github.com/alexpages/noteapps/assets/99218116/611249e7-1c93-4f3c-904b-913778be5e61)
+
+#### Mac M1
+![Mac M1](https://github.com/alexpages/noteapps/assets/99218116/79cf4120-b3ec-4175-879f-fd00b9f986c3)
