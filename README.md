@@ -28,6 +28,15 @@ Here are some features of the overall configuration:
 ```
 - Now that Firstapp is running, run the tests from Secondapp
 
+```
+NOTE: for mac M1 users, you should add a line into the docker-compose.yml to specify the platform:
+
+      build:
+         context: .
+         dockerfile: Dockerfile
+         platform: linux/amd64      #Specifies platform
+      ports:
+```
 ### What to expect
 - After running the tests from SecondApp, the user should be able to see on the console the outputs from communicating with FirstApp.
 - Also, the user can communicate directly with FirstApp through Docker and "http://localhost:8080". Please refer to the `FirstAppApi` class for usage in POSTMAN.
