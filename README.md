@@ -20,7 +20,7 @@ Here are some features of the overall configuration:
   * Tests to communicate to running Firstapp.
 
 ### How to run this project
-1. First, download the two projects and set them up separately in your preferred IDE.
+1. First, download the two projects and set them up separately in your preferred IDE (import existing maven project).
 2. Ensure that Docker Desktop is running or similar.
 3. Go to the root of the Firstapp and run:
 ```
@@ -29,6 +29,75 @@ Here are some features of the overall configuration:
 - Now that Firstapp is running, run the tests from Secondapp
 
 ### What to expect
-
 - After running the tests from SecondApp, the user should be able to see on the console the outputs from communicating with FirstApp.
-- Also, the user can communicate directly with FirstApp through Docker and "http://localhost:8080".
+- Also, the user can communicate directly with FirstApp through Docker and "http://localhost:8080". Please refer to the `FirstAppApi` class for usage in POSTMAN.
+
+### Endpoints
+#### Place Note
+  - Method: `POST`
+  - URL path: `/note`
+  - Request body:
+    ```
+    {
+        "message": "first message"
+    }
+    ```
+  - Response:
+    Header: `HTTP 201`
+    Body:
+      ```
+      {
+          "id": 1,
+          "message": "first message"
+      }
+      ```
+    or
+    Header: `HTTP 400` or `HTTP 500`
+    Body example:
+      ```
+     {
+         "status": "INTERNAL_SERVER_ERROR",
+         "throwable": null,
+         "error": "NoteServiceImpl > getNoteById > There was an error retrieving Note with ID: 100",
+         "timestamp": "2024-02-03 09:19:18"
+     }
+      ```
+#### Get Note
+  - Method: `GET`
+  - URL path: `/note/:noteId`
+  - Request body: NA
+  - Response:
+    Header: `HTTP 200`
+    Body:
+      ```
+      {
+          "id": 1,
+          "message": "first message"
+      }
+      ```
+    or
+    Header: `HTTP 404`
+    Body: NA
+#### Get Notes
+  - Method: `GET`
+  - URL path: `/note`
+  - Request body: NA
+  - Response:
+    Header: `HTTP 200`
+    Body:
+      ```
+      {
+          "id": 1,
+          "message": "first message"
+      },
+      {
+          "id": 2,
+          "message": "second message"
+      }
+      ```
+    or
+    Header: `HTTP 200`
+    Body:
+      ```
+      []
+      ```
