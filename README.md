@@ -19,24 +19,31 @@ Here are some features of the overall configuration:
   * WebClient usage
   * Tests to communicate to running Firstapp.
 
-### How to run this project
+### How to run this project - Windows
 1. First, download the two projects and set them up separately in your preferred IDE (import existing maven project).
 2. Ensure that Docker Desktop is running or similar.
 3. Go to the root of the Firstapp and run:
 ```
 ./start.sh
 ```
-- Now that Firstapp is running, run the tests from Secondapp
+ (You can also run docker-compose up manually).
 
+4. Run Secondapp as `maven install` or run manually the tests as JUnit.
+
+### How to run this project - Mac
+1. First, download the two projects and set them up separately in your preferred IDE.
+2. Ensure that Docker Desktop is running or similar.
+3. NOTE: for Mac M1 users, you should add a line into the docker-compose.yml to specify the platform:
 ```
-NOTE: for mac M1 users, you should add a line into the docker-compose.yml to specify the platform:
-
       build:
          context: .
          dockerfile: Dockerfile
          platform: linux/amd64      #Specifies platform
       ports:
 ```
+4. Go to the root of the Firstapp and manually docker-compose up:
+5. Run Secondapp as `maven install` or run manually the tests as JUnit.
+
 ### What to expect
 - After running the tests from SecondApp, the user should be able to see on the console the outputs from communicating with FirstApp.
 - Also, the user can communicate directly with FirstApp through Docker and "http://localhost:8080". Please refer to the `FirstAppApi` class for usage in POSTMAN.
